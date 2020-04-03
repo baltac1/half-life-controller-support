@@ -47,7 +47,7 @@ pygame.joystick.init()
 
 textPrint = TextPrint()
 
-joystick = pygame.joystick.Joystick(1)
+joystick = pygame.joystick.Joystick(0)
 joystick.init()
 # -------- Main Program Loop -----------
 while done==False:
@@ -59,28 +59,30 @@ while done==False:
         
         # Possible joystick actions: JOYAXISMOTION JOYBALLMOTION JOYBUTTONDOWN JOYBUTTONUP JOYHATMOTION
         if event.type == pygame.JOYBUTTONDOWN:
-            if joystick.get_button(0):
+            if joystick.get_button(0):             # Y in xbox36 controller
             	keyboard.press_and_release("f")
-            if joystick.get_button(1):
+            if joystick.get_button(1):             # B in xbox36 controller  
             	keyboard.press_and_release("r")
-            if joystick.get_button(2):
+            if joystick.get_button(2):             # A in xbox36 controller
             	keyboard.press_and_release("q")
-            if joystick.get_button(3):
+            if joystick.get_button(3):             # X in xbox36 controller
             	keyboard.press_and_release("e")
-            if joystick.get_button(4):
+            if joystick.get_button(4):             # LB in xbox36 controller
                 mouse.right_click()
-            if joystick.get_button(5):
+            if joystick.get_button(5):             # RB in xbox36 controller
                 keyboard.press_and_release('enter')
-            if joystick.get_button(6):
+            if joystick.get_button(6):             # LT in xbox36 controller
                 keyboard.press_and_release('ctrl')
-            if joystick.get_button(7):
+            if joystick.get_button(7):             # RT in xbox36 controller
                 keyboard.press_and_release('space')
-            if joystick.get_button(8):
+            if joystick.get_button(8):             # SELECT in xbox36 controller
                 keyboard.press_and_release('f6')
-            if joystick.get_button(9):
+            if joystick.get_button(9):             # START in xbox36 controller
                 keyboard.press_and_release('o')
-            if joystick.get_button(10):
+            if joystick.get_button(10):            # L3 in xbox36 controller
                 keyboard.press_and_release('shift')
+            if joystick.get_button(11):            # R3 in xbox36 controller
+                pass
 
 
 
@@ -89,6 +91,10 @@ while done==False:
 
         if event.type == pygame.JOYHATMOTION:
             hat_pos = joystick.get_hat(0)
+            # DPAD UP : (0,1)
+            # DPAD DOWN : (0,-1)
+            # DPAD LEFT : (-1,0)
+            # DPAD RIGHT : (1,0)
             if hat_pos == (1,0):
                 keyboard.press_and_release('+')
             elif hat_pos == (-1, 0):
